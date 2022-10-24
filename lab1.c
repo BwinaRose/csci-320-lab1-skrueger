@@ -2,8 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_SIZE 255
-
+#define MAX_SIZE 100
 
 
 char* readString(char* str){
@@ -17,19 +16,26 @@ char* readString(char* str){
 
     //printf("%s",line);
     fclose(txt_msg);
-    return "ok";
+    return ptr;
 }
 
 char* mysteryExplode(){
     char str[100];
     printf("Enter name of file to read: ");
     scanf("%s",str);
+    printf("\n\n\n\n");
     char* fd = readString(str);
+    //printf("%s",fd);
+    char newStr[MAX_SIZE];
+    for(int i = 0; i < strlen(str)-1; i++){
+        strncat(newStr,fd, i);
+    }
     //make new str
     //for i = 1 str lenth < 1 i++:
     // strncat (newstr, &str , i
 
     //printf("You input: %s\n",str);
-    printf("%s\n",fd);
-    return "working";
+    //printf("%ld",strlen(fd));
+    printf("%s\n",newStr);
+    return "done";
 }
