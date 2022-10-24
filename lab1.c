@@ -10,6 +10,7 @@ char* readString(char* str){
     char line[MAX_SIZE];
     fgets(line,99, txt_msg);
 
+
     char* ptr = (char*)malloc(MAX_SIZE*sizeof(char));
     memset(ptr, '\0',sizeof(char)*MAX_SIZE);
     strcpy(ptr,line);
