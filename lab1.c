@@ -5,7 +5,6 @@
 #define MAX_SIZE 100
 
 
-
 char* readString(char* str){
     FILE* txt_msg = fopen(str,"r");
     char line[MAX_SIZE];
