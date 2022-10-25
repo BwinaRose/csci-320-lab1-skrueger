@@ -1,42 +1,25 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
-#define MAX_SIZE 100
-
-
-char* readString(char* str){
-    FILE* txt_msg = fopen(str,"r");
-    char line[MAX_SIZE];
-    fgets(line,99, txt_msg);
+#include "lab1.h"
 
 
-    char* ptr = (char*)malloc(MAX_SIZE*sizeof(char));
-    memset(ptr, '\0',sizeof(char)*MAX_SIZE);
-    strcpy(ptr,line);
-
-    //printf("%s",line);
-    fclose(txt_msg);
+char* readString(char* file){
+    char* ptr = malloc(MAX_LINE_LEN*sizeof(char));
+    FILE* txt = fopen(file,"r");
+    strcpy(ptr,fgets(ptr,MAX_LINE_LEN-1, txt));
+    fclose(txt);
     return ptr;
 }
 
-char* mysteryExplode(){
-    char str[100];
-    printf("Enter name of file to read: ");
-    scanf("%s",str);
-    printf("\n\n\n\n");
-    char* fd = readString(str);
-    //printf("%s",fd);
-    char newStr[MAX_SIZE];
-    for(int i = 0; i < strlen(str)-1; i++){
-        strncat(newStr,fd, i);
+char* mysteryExplode(const char* str){
+    int len = strlen(str)-1;
+    char* newStr = calloc(((len*(len+1))/2),1);
+    int count = 0;
+    for(int i = 0; i < len; i++){
+        for(int j = 0; j < i+1; j++){
+            strncat(newStr,&str[j],1);
+        }
     }
-    //make new str
-    //for i = 1 str lenth < 1 i++:
-    // strncat (newstr, &str , i
-
-    //printf("You input: %s\n",str);
-    //printf("%ld",strlen(fd));
-    printf("%s\n",newStr);
-    return "done";
+    return newStr;
 }
