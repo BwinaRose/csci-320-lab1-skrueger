@@ -4,6 +4,7 @@
 #include "lab1.h"
 
 
+
 char* readString(char* file){
     char* ptr = malloc(MAX_LINE_LEN*sizeof(char));
     FILE* txt = fopen(file,"r");
